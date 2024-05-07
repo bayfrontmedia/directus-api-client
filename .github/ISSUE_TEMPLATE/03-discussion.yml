@@ -1,0 +1,15 @@
+name: ❓ Question
+description: Does something need clarified?
+title: "[QUESTION]: "
+labels: ["Type: Question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        To create a new question, complete the form below.
+  - type: textarea
+    attributes:
+      label: Description
+      description: Question description
+    validations:
+      required: true

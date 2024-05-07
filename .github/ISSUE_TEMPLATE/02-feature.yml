@@ -1,0 +1,23 @@
+name: 💡️ Feature request
+description: Should a new feature be added?
+title: "[FEATURE]: "
+labels: ["Type: Feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        To request a new feature, complete the form below.
+  - type: textarea
+    attributes:
+      label: Description
+      description: Detailed description of the feature
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Use-case
+      description: Provide an explanation how/when the feature would be helpful
+  - type: textarea
+    attributes:
+      label: Possible solution
+      description: Possible solution/fix for this issue

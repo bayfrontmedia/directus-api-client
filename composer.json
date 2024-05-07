@@ -1,0 +1,40 @@
+{
+  "name": "bayfrontmedia/directus-api-client",
+  "description": "A library used to interact with the Directus API using PHP.",
+  "homepage": "https://github.com/bayfrontmedia/directus-api-client",
+  "license" : "MIT",
+  "type": "library",
+  "keywords": [
+    "php",
+    "api",
+    "directus",
+    "client",
+    "model",
+    "library"
+  ],
+  "authors": [
+    {
+      "name": "John Robinson",
+      "email": "john@bayfrontmedia.com",
+      "homepage": "https://www.bayfrontmedia.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/bayfrontmedia/directus-api-client"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist"
+  },
+  "require": {
+    "php": "^8.0",
+    "bayfrontmedia/multi-curl": "^2.1",
+    "bayfrontmedia/php-array-helpers": "^2.0",
+    "bayfrontmedia/php-validator": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bayfront\\Directus\\": "src/"
+    }
+  }
+}
