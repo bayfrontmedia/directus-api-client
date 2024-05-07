@@ -4,7 +4,7 @@ This library requires a configuration array be passed to its constructor.
 
 The configuration array requires the following keys:
 
-- `base_url`: Base URL to the Directus API (i.e. `https://example.com/api`)
+- `base_url`: Base URL to the Directus API
 - `access_token`: Static user token (
   see [Directus docs](https://docs.directus.io/reference/authentication.html#access-tokens))
 
@@ -27,7 +27,7 @@ If an object is returned without a body, an empty array is returned.
 If the body is not JSON (i.e. a string), its value will exist in a key named `value`.
 If the body contains a `data` key, only its value is returned.
 
-**Public methods:**
+## Public methods
 
 - [getBaseUrl](#getbaseurl)
 - [getUser](#getuser)
