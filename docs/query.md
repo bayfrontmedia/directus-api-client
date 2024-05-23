@@ -62,9 +62,9 @@ $directusClient = new DirectusClient([
 $query = new Query();
 
 $query->fields([
-'name',
-'contact.email',
-'date_created'
+    'name',
+    'contact.email',
+    'date_created'
 ])->limit(50);
 
 $directusClient->get('/contacts/' . $query->getQuery());
@@ -139,9 +139,9 @@ $directusClient = new DirectusClient([
 $query = new Query();
 
 $query->fields([
-'name',
-'contact.email',
-'date_created'
+    'name',
+    'contact.email',
+    'date_created'
 ])->filter(new RelationalField('contact.email', Operator::CONTAINS, '@example.com'))->limit(50);
 
 $directusClient->get('/contacts/' . $query->getQuery());
@@ -179,9 +179,9 @@ $filter->field(new RelationalField('date_created', Operator::GREATER_THAN_OR_EQU
 $query = new Query();
 
 $query->fields([
-'name',
-'contact.email',
-'date_created'
+    'name',
+    'contact.email',
+    'date_created'
 ])->filter($filter)->limit(50);
 
 $directusClient->get('/contacts/' . $query->getQuery());
