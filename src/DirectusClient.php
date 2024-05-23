@@ -82,7 +82,16 @@ class DirectusClient
     {
 
         if (!$response->isSuccessful()) {
-            throw new DirectusClientException(Arr::get((array)$response->getBody(true, []), 'errors.0.message', $default_message), $response->getStatusCode());
+
+            $body = $response->getBody(true, []);
+
+            if (is_array($body) && is_string(Arr::get($body, 'errors.0.message'))) {
+                $message = Arr::get($body, 'errors.0.message');
+            } else {
+                $message = $default_message;
+            }
+
+            throw new DirectusClientException($message, $response->getStatusCode());
         }
 
         return $response;

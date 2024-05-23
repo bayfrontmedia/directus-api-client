@@ -13,10 +13,9 @@ class Query
     /**
      * Get query string.
      *
-     * @param bool $url_encode
      * @return string
      */
-    public function getQuery(bool $url_encode = true): string
+    public function getQuery(): string
     {
 
         $query = '';
@@ -30,7 +29,7 @@ class Query
         // Filter
 
         if (!empty($this->getFilter())) {
-            $query .= '?filter=' . json_encode($this->getFilter());
+            $query .= '&filter=' . json_encode($this->getFilter());
         }
 
         // Search
@@ -81,18 +80,13 @@ class Query
 
         // Sanitize
 
+        $query = str_replace(' ', '+', $query); // Replace spaces
+
         if ($query == '') {
             return $query;
         }
 
-        $query = ltrim($query, '&');
-        $query = '?' . $query;
-
-        if ($url_encode) {
-            return urlencode($query);
-        }
-
-        return $query;
+        return  '?' . ltrim($query, '&');
 
     }
 

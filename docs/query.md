@@ -40,7 +40,7 @@ Get query string.
 
 **Parameters:**
 
-- `$url_encode = true` (bool)
+- None
 
 **Returns:**
 
