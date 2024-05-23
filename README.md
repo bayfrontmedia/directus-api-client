@@ -31,4 +31,6 @@ composer require bayfrontmedia/directus-api-client
 
 ## Documentation
 
-See [documentation](docs/README.md).
+For usage information, see [Directus client](docs/directus-client.md).
+
+To aid in creating the query string for a request, the [query builder](docs/query.md) can be used.

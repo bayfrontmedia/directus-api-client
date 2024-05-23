@@ -1,6 +1,6 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
-namespace Bayfront\Directus\Query;
+namespace Bayfront\Directus\Query\Filter;
 
 /**
  * Operator constants.
@@ -18,7 +18,7 @@ class Operator
     public const LESS_THAN = '_lt';
     public const LESS_THAN_OR_EQUAL = '_lte';
     public const GREATER_THAN = '_gt';
-    public const GREATER_OR_EQUAL = '_gte';
+    public const GREATER_THAN_OR_EQUAL = '_gte';
     public const ONE_OF = '_in';
     public const NOT_ONE_OF = '_nin';
     public const NULL = '_null';

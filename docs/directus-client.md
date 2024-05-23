@@ -1,6 +1,6 @@
-# Directus API client
+# Directus client
 
-This library requires a configuration array be passed to its constructor.
+The `DirectusClient` class requires a configuration array be passed to its constructor.
 
 The configuration array requires the following keys:
 
@@ -15,7 +15,7 @@ Example:
 ```php
 use Bayfront\Directus\DirectusClient;
 
-$directus = new DirectusClient([
+$directusClient = new DirectusClient([
     'base_url' => 'https://example.com',
     'access_token' => 'ACCESS_TOKEN'
 ]);
@@ -26,6 +26,9 @@ When a response is received from the Directus API, its contents are evaluated.
 If an object is returned without a body, an empty array is returned.
 If the body is not JSON (i.e. a string), its value will exist in a key named `value`.
 If the body contains a `data` key, only its value is returned.
+
+The [query builder](query.md) can be used to build the query string as an alternative to passing the
+`data` array to any of the public methods.
 
 ## Public methods
 

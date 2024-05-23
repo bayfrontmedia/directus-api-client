@@ -4,11 +4,14 @@ namespace Bayfront\Directus\Query;
 
 use Bayfront\Directus\Query\Interfaces\FieldInterface;
 
+/**
+ * Used to build the query string for a Directus REST API request.
+ */
 class Query
 {
 
     /**
-     * Get query.
+     * Get query string.
      *
      * @param bool $url_encode
      * @return string
@@ -124,7 +127,7 @@ class Query
      * Add filter to query.
      * Each query can only have one filter.
      *
-     * @param FieldInterface $field
+     * @param FieldInterface $field (RelationalField or LogicalOperator)
      * @return $this
      */
     public function filter(FieldInterface $field): self
@@ -184,7 +187,7 @@ class Query
     }
 
     /**
-     * Get fields to sort.
+     * Get field(s) to sort.
      *
      * @return array
      */

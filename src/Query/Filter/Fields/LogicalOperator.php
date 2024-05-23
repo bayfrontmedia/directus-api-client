@@ -1,9 +1,13 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Bayfront\Directus\Query\Fields;
+namespace Bayfront\Directus\Query\Filter\Fields;
 
 use Bayfront\Directus\Query\Interfaces\FieldInterface;
 
+/**
+ * Logical operator filter.
+ * See: https://docs.directus.io/reference/filter-rules.html#logical-operators
+ */
 class LogicalOperator implements FieldInterface
 {
 
