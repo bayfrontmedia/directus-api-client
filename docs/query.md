@@ -173,8 +173,9 @@ $directusClient = new DirectusClient([
 
 $filter = new LogicalOperator(Operator::LOGICAL_AND);
 
-$filter->field(new RelationalField('contact.email', Operator::ENDS_WITH, '@example.com'));
-$filter->field(new RelationalField('date_created', Operator::GREATER_THAN_OR_EQUAL, '$NOW(-1 month)'));
+$filter
+    ->field(new RelationalField('contact.email', Operator::ENDS_WITH, '@example.com'))
+    ->field(new RelationalField('date_created', Operator::GREATER_THAN_OR_EQUAL, '$NOW(-1 month)'));
 
 $query = new Query();
 
