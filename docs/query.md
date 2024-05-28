@@ -36,15 +36,15 @@ $query = new Query();
 
 **Description:**
 
-Get query string.
+Get query as string or array.
 
 **Parameters:**
 
-- None
+- `$array = false` (bool)
 
 **Returns:**
 
-- (string)
+- (string|array)
 
 **Example:**
 
@@ -69,6 +69,8 @@ $query->fields([
 
 $directusClient->get('/contacts/' . $query->getQuery());
 ```
+
+Returning as an array may be desired in some cases, such as when [updating multiple items](https://docs.directus.io/reference/items.html#update-multiple-items).
 
 ## fields
 
