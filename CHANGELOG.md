@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities
 
+## [1.1.1] - 2024.05.28
+
+### Added
+
+- Added the ability for the `getQuery` method to return as an array.
+
 ## [1.1.0] - 2024.05.23
 
 ### Added

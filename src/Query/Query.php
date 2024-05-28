@@ -11,82 +11,127 @@ class Query
 {
 
     /**
-     * Get query string.
+     * Get query as string or array.
      *
-     * @return string
+     * @param bool $array
+     * @return string|array
      */
-    public function getQuery(): string
+    public function getQuery(bool $array = false): string|array
     {
 
-        $query = '';
+        $query = [];
+
+        if (!empty($this->getFields())) {
+            $query['fields'] = $this->getFields();
+        }
+
+        if (!empty($this->getFilter())) {
+            $query['filter'] = $this->getFilter();
+        }
+
+        if ($this->getSearch() !== '') {
+            $query['search'] = $this->getSearch();
+        }
+
+        if (!empty($this->getSort())) {
+            $query['sort'] = $this->getSort();
+        }
+
+        if ($this->getLimit() !== 0) {
+            $query['limit'] = $this->getLimit();
+        }
+
+        if ($this->getOffset() !== 0) {
+            $query['offset'] = $this->getOffset();
+        }
+
+        if ($this->getPage() !== 0) {
+            $query['page'] = $this->getPage();
+        }
+
+        if (!empty($this->getAggregate())) {
+            foreach ($this->getAggregate() as $k => $v) {
+                $query['aggregate'][$k] = $v;
+            }
+        }
+
+        if (!empty($this->getGroupBy())) {
+            $query['groupBy'] = $this->getGroupBy();
+        }
+
+        if ($array === true) {
+            return $query;
+        }
+
+        $string = '';
 
         // Fields
 
-        if (!empty($this->getFields())) {
-            $query .= '&fields[]=' . implode(',', $this->getFields());
+        if (isset($query['fields'])) {
+            $string .= '&fields[]=' . implode(',', $query['fields']);
         }
 
         // Filter
 
-        if (!empty($this->getFilter())) {
-            $query .= '&filter=' . json_encode($this->getFilter());
+        if (isset($query['filter'])) {
+            $string .= '&filter=' . json_encode($query['filter']);
         }
 
         // Search
 
-        if ($this->getSearch() != '') {
-            $query .= '&search=' . $this->getSearch();
+        if (isset($query['search'])) {
+            $string .= '&search=' . $query['search'];
         }
 
         // Sort
 
-        if (!empty($this->getSort())) {
-            $query .= '&sort[]=' . implode(',', $this->getSort());
+        if (isset($query['sort'])) {
+            $string .= '&sort[]=' . implode(',', $query['sort']);
         }
 
         // Limit
 
-        if ($this->getLimit() !== 0) {
-            $query .= '&limit=' . $this->getLimit();
+        if (isset($query['limit'])) {
+            $string .= '&limit=' . $query['limit'];
         }
 
         // Offset
 
-        if ($this->getOffset() !== 0) {
-            $query .= '&offset=' . $this->getOffset();
+        if (isset($query['offset'])) {
+            $string .= '&offset=' . $query['offset'];
         }
 
         // Page
 
-        if ($this->getPage() !== 0) {
-            $query .= '&page=' . $this->getPage();
+        if (isset($query['page'])) {
+            $string .= '&page=' . $query['page'];
         }
 
         // Aggregate
 
-        if (!empty($this->getAggregate())) {
+        if (isset($query['aggregate'])) {
 
-            foreach ($this->getAggregate() as $k => $v) {
-                $query .= '&aggregate[' . $k . ']=' . $v;
+            foreach ($query['aggregate'] as $k => $v) {
+                $string .= '&aggregate[' . $k . ']=' . $v;
             }
 
         }
 
         // Group by
 
-        if (!empty($this->getGroupBy())) {
-            $query .= '&groupBy[]=' . implode(',', $this->getGroupBy());
+        if (isset($query['groupBy'])) {
+            $string .= '&groupBy[]=' . implode(',', $query['groupBy']);
         }
 
         // Sanitize
 
-        $query = str_replace(' ', '+', $query); // Replace spaces
+        $string = str_replace(' ', '+', $string); // Replace spaces
 
-        if ($query == '') {
-            return $query;
+        if ($string == '') {
+            return $string;
         }
 
-        return  '?' . ltrim($query, '&');
+        return  '?' . ltrim($string, '&');
 
     }
 
