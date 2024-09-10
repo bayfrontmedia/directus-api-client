@@ -6,7 +6,8 @@ use Bayfront\ArrayHelpers\Arr;
 use Bayfront\Directus\Exceptions\DirectusClientException;
 use Bayfront\MultiCurl\Client;
 use Bayfront\MultiCurl\ClientParent;
-use Bayfront\Validator\Validate;
+use Bayfront\Validator\Rules\IsJson;
+use Bayfront\Validator\Rules\Url;
 
 class DirectusClient
 {
@@ -24,11 +25,13 @@ class DirectusClient
 
         // Validate config
 
+        $validateUrl = new Url((string)Arr::get($config, 'base_url', ''));
+
         if (Arr::isMissing($config, [
                 'base_url',
                 'access_token'
             ])
-            || !Validate::url((string)$config['base_url'])
+            || !$validateUrl->isValid()
             || !is_string($config['access_token'])) {
             throw new DirectusClientException('Unable to create DirectusClient: Missing or invalid configuration keys');
         }
@@ -123,7 +126,9 @@ class DirectusClient
          * Example: https://docs.directus.io/reference/system/server.html#ping
          */
 
-        if (Validate::json($body)) {
+        $validateJson = new IsJson($body);
+
+        if ($validateJson->isValid()) {
             $body = json_decode($body, true);
         } else {
             $body = [
