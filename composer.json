@@ -28,7 +28,7 @@
   },
   "require": {
     "php": "^8.0",
-    "bayfrontmedia/multi-curl": "^2.1",
+    "bayfrontmedia/multi-curl": "^2.2",
     "bayfrontmedia/php-array-helpers": "^2.0",
     "bayfrontmedia/php-validator": "^4.0"
   },

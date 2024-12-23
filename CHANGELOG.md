@@ -13,7 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities
 
-## [1.1.2] - 2.24.09.09
+## [1.1.3] - 2024.12.23
+
+### Added
+
+- Tested up to PHP v8.4.
+
+## [1.1.2] - 2024.09.09
 
 ### Changed
 
